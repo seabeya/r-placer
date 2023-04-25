@@ -60,7 +60,7 @@
       drawGrid(0, Y_OFFSET, w, h + Y_OFFSET, bg);
     };
     img.onerror = () => {
-      location.href = '/'; // <----------- Change
+      location.href = 'https://shaanaliyev.github.io/r-placer/';
     };
     img.src = image;
     // }
@@ -129,6 +129,6 @@
   if (url && x && y) {
     place(url, +x, +y);
   } else {
-    location.href = '/'; // <----------- Change
+    location.href = 'https://shaanaliyev.github.io/r-placer/';
   }
 })();
