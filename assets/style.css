@@ -2,7 +2,7 @@
   /* Colors */
   --main_bg: #fff;
   --main: #ff4500;
-  --b1: #696969;
+  --b1: #7e7e7e;
 }
 
 /* Page Width Container */
@@ -121,6 +121,7 @@ body {
 
 /* result */
 .result {
+  display: none;
   text-align: center;
   margin-top: 1rem;
   padding: 1rem 1rem 1.1rem 1rem;
@@ -157,4 +158,20 @@ body {
 }
 .success span {
   font-size: 0.8rem;
+}
+/* alt */
+.alt {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.alt a {
+  text-decoration: none;
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.alt a:hover {
+  text-decoration: underline;
 }

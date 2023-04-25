@@ -25,6 +25,11 @@
           </div>
           <div class="g-start"><button id="generate">Generate</button></div>
           <div class="result" id="result"></div>
+          <div class="alt">
+            <a href="https://github.com/shaanaliyev/r-placer#" target="_blank">How to use?</a>
+            <a href="https://github.com/shaanaliyev/r-placer#" target="_blank">Disclaimer</a>
+            <a href="https://github.com/shaanaliyev/r-placer" target="_blank">GitHub</a>
+          </div>
         </div>
       </div>
     </section>
@@ -40,6 +45,7 @@
 
         // check
         if (url && x && y) {
+          resultElement.style.display = 'block';
           resultElement.classList.remove('error');
           resultElement.classList.add('success');
 
@@ -69,6 +75,7 @@
           resultElement.appendChild(btn);
           resultElement.appendChild(span);
         } else {
+          resultElement.style.display = 'block';
           resultElement.classList.remove('success');
           resultElement.classList.add('error');
           resultElement.innerText = 'Error: Invalid input';
