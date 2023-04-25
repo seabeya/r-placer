@@ -19,13 +19,68 @@
       </div>
       <div class="main">
         <div class="main-area">
-          <input class="g-url" placeholder="enter a image URL" type="url" />
+          <input id="url" class="g-url" placeholder="enter an image URL" type="url" />
           <div class="g-coordinate">
             <label>Starting X: <input id="x" type="number" step="1" /></label><label>Starting Y: <input id="y" type="number" step="1" /></label>
           </div>
-          <div class="g-start"><button type="submit">Generate</button></div>
+          <div class="g-start"><button id="generate">Generate</button></div>
+          <div class="result" id="result"></div>
         </div>
       </div>
     </section>
+    <script>
+      document.getElementById('generate').addEventListener('click', async () => {
+        const resultElement = document.getElementById('result');
+        const url = document.getElementById('url').value;
+        const x = document.getElementById('x').value;
+        const y = document.getElementById('y').value;
+
+        // reset element:
+        resultElement.innerText = '';
+
+        // check
+        if (url && x && y) {
+          resultElement.classList.remove('error');
+          resultElement.classList.add('success');
+
+          // build link:
+          const canvas = new URL('https://192.168.30.128/place.html');
+          canvas.searchParams.append('url', url);
+          canvas.searchParams.append('x', x);
+          canvas.searchParams.append('y', y);
+
+          // result input:
+          const input = document.createElement('input');
+          input.id = 'link';
+          input.readOnly = true;
+          input.value = canvas.toString();
+
+          // copy button:
+          const btn = document.createElement('button');
+          btn.setAttribute('onclick', 'copyLink()');
+          btn.innerText = 'Copy link';
+          btn.id = 'copy';
+
+          // info:
+          const span = document.createElement('span');
+          span.innerText = 'Share this link with others to collaborate together.';
+
+          resultElement.appendChild(input);
+          resultElement.appendChild(btn);
+          resultElement.appendChild(span);
+        } else {
+          resultElement.classList.remove('success');
+          resultElement.classList.add('error');
+          resultElement.innerText = 'Error: Invalid input';
+        }
+      });
+
+      function copyLink() {
+        const linkElement = document.getElementById('link');
+        linkElement.select();
+        linkElement.setSelectionRange(0, 99999);
+        navigator.clipboard.writeText(linkElement.value);
+      }
+    </script>
   </body>
 </html>
