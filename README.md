@@ -5,7 +5,7 @@
 <h1 align="center">R-Placer</h1>
 
 <p align="center">
-  Reddit Place pixel art (canvas) placer
+  Pixel art placer for Reddit Place event
 <p>
 
 <br>
