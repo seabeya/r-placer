@@ -5,7 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Reddit Place pixel art creator" />
-    <meta name="keywords" content="rplace, pixelart, pixel-art, reddit, drawing, reddit-place" />
+    <meta
+      name="keywords"
+      content="rplace, pixelart, pixel-art, reddit, drawing, reddit-place"
+    />
     <meta name="author" content="shaanaliyev" />
     <title>R-Placer</title>
     <link rel="icon" type="image/x-icon" href="./assets/r-placer.webp" />
@@ -14,76 +17,97 @@
   <body>
     <section class="s-main w">
       <div class="head">
-        <img src="./assets/r-placer.webp" width="75" height="75" alt="r-placer" />
+        <img
+          src="./assets/r-placer.webp"
+          width="75"
+          height="75"
+          alt="r-placer"
+        />
         <span>R-Placer</span>
       </div>
       <div class="main">
         <div class="main-area">
-          <input id="url" class="g-url" placeholder="enter an image URL" type="url" />
+          <input
+            id="url"
+            class="g-url"
+            placeholder="enter an image URL"
+            type="url"
+          />
           <div class="g-coordinate">
-            <label>Starting X: <input id="x" type="number" step="1" /></label><label>Starting Y: <input id="y" type="number" step="1" /></label>
+            <label>Starting X: <input id="x" type="number" step="1" /></label
+            ><label>Starting Y: <input id="y" type="number" step="1" /></label>
           </div>
           <div class="g-start"><button id="generate">Generate</button></div>
           <div class="result" id="result"></div>
           <div class="alt">
-            <a href="https://github.com/shaanaliyev/r-placer#how-to-use" target="_blank">How to use?</a>
-            <a href="https://github.com/shaanaliyev/r-placer#disclaimer" target="_blank">Disclaimer</a>
-            <a href="https://github.com/shaanaliyev/r-placer" target="_blank">GitHub</a>
+            <a
+              href="https://github.com/shaanaliyev/r-placer#how-to-use"
+              target="_blank"
+              >How to use?</a
+            >
+            <a href="https://github.com/shaanaliyev/r-placer" target="_blank"
+              >GitHub</a
+            >
           </div>
         </div>
       </div>
     </section>
     <script>
-      document.getElementById('generate').addEventListener('click', async () => {
-        const resultElement = document.getElementById('result');
-        const url = document.getElementById('url').value;
-        const x = document.getElementById('x').value;
-        const y = document.getElementById('y').value;
+      document
+        .getElementById("generate")
+        .addEventListener("click", async () => {
+          const resultElement = document.getElementById("result");
+          const url = document.getElementById("url").value;
+          const x = document.getElementById("x").value;
+          const y = document.getElementById("y").value;
 
-        // reset element:
-        resultElement.innerText = '';
+          // reset element:
+          resultElement.innerText = "";
 
-        // check
-        if (url && x && y) {
-          resultElement.style.display = 'flex';
-          resultElement.classList.remove('error');
-          resultElement.classList.add('success');
+          // check
+          if (url && x && y) {
+            resultElement.style.display = "flex";
+            resultElement.classList.remove("error");
+            resultElement.classList.add("success");
 
-          // build link:
-          const canvas = new URL('https://shaanaliyev.github.io/r-placer/place.html');
-          canvas.searchParams.append('url', url);
-          canvas.searchParams.append('x', x);
-          canvas.searchParams.append('y', y);
+            // build link:
+            const canvas = new URL(
+              "https://shaanaliyev.github.io/r-placer/place.html"
+            );
+            canvas.searchParams.append("url", url);
+            canvas.searchParams.append("x", x);
+            canvas.searchParams.append("y", y);
 
-          // result input:
-          const input = document.createElement('input');
-          input.id = 'link';
-          input.readOnly = true;
-          input.value = canvas.toString();
+            // result input:
+            const input = document.createElement("input");
+            input.id = "link";
+            input.readOnly = true;
+            input.value = canvas.toString();
 
-          // copy button:
-          const btn = document.createElement('button');
-          btn.setAttribute('onclick', 'copyLink()');
-          btn.innerText = 'Copy link';
-          btn.id = 'copy';
+            // copy button:
+            const btn = document.createElement("button");
+            btn.setAttribute("onclick", "copyLink()");
+            btn.innerText = "Copy link";
+            btn.id = "copy";
 
-          // info:
-          const span = document.createElement('span');
-          span.innerText = 'Share this link with others to collaborate together.';
+            // info:
+            const span = document.createElement("span");
+            span.innerText =
+              "Share this link with others to collaborate together.";
 
-          resultElement.appendChild(input);
-          resultElement.appendChild(btn);
-          resultElement.appendChild(span);
-        } else {
-          resultElement.style.display = 'block';
-          resultElement.classList.remove('success');
-          resultElement.classList.add('error');
-          resultElement.innerText = 'Error: Invalid input';
-        }
-      });
+            resultElement.appendChild(input);
+            resultElement.appendChild(btn);
+            resultElement.appendChild(span);
+          } else {
+            resultElement.style.display = "block";
+            resultElement.classList.remove("success");
+            resultElement.classList.add("error");
+            resultElement.innerText = "Error: Invalid input";
+          }
+        });
 
       function copyLink() {
-        const linkElement = document.getElementById('link');
+        const linkElement = document.getElementById("link");
         linkElement.select();
         linkElement.setSelectionRange(0, 99999);
         navigator.clipboard.writeText(linkElement.value);
