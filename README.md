@@ -31,3 +31,9 @@ Official subreddit of the "Reddit Place" event: [r/place](https://www.reddit.com
 <br>
 
 _This is a completely browser-based, client-side application. Therefore, you decide whether the image you provided is working and placed correctly._
+
+<br> 
+
+<hr>
+
+Looking for overlay? have a look: https://github.com/shaanaliyev/r-place-overlay
