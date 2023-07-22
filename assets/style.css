@@ -1,8 +1,10 @@
 :root {
   /* Colors */
-  --main_bg: #fff;
+  --main_bg: #0d1117;
   --main: #ff4500;
-  --b1: #555555;
+  --d1: #161b22;
+  --l1: #fff;
+  --l2: #bdbdbd;
 }
 
 /* Page Width Container */
@@ -65,20 +67,25 @@ body {
   width: 100%;
   outline: none;
   border: 2px solid var(--main);
+  background-color: var(--d1);
+  color: var(--l1);
   border-radius: 20px;
   font-size: 1.1rem;
   padding: 0.2rem 1rem 0.4rem 1rem;
-  font-weight: 600;
-  color: var(--b1);
+}
+.g-url::placeholder {
+  color: var(--l2);
+  font-style: italic;
+  opacity: 1;
 }
 
 .g-coordinate {
-  margin: 0.3rem 0.5rem;
+  margin: 1rem;
   display: flex;
   justify-content: space-around;
 }
 .g-coordinate label {
-  color: var(--b1);
+  color: var(--l2);
   font-weight: 600;
 }
 .g-coordinate input {
@@ -87,6 +94,8 @@ body {
   max-width: 100px;
   border: none;
   border-bottom: 2px solid var(--main);
+  background-color: var(--d1);
+  color: var(--l1);
   font-size: 1rem;
 }
 
@@ -110,7 +119,7 @@ body {
   width: 150px;
   padding: 0.3rem 1rem 0.5rem 1rem;
   background-color: var(--main);
-  color: #fff;
+  color: var(--l1);
   font-weight: 600;
   border-radius: 5px;
 }
@@ -128,13 +137,13 @@ body {
 }
 .error {
   color: red;
-  background-color: #ffcece;
-  border: 2px solid #ff4141;
+  background-color: #ff000033;
+  border: 1px solid red;
   font-weight: 600;
 }
 .success {
-  background-color: #ecffce;
-  border: 2px solid #b3ff41;
+  background-color: #9dff0042;
+  border: 1px solid #b3ff41;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -142,6 +151,10 @@ body {
 .success input {
   outline: none;
   border: 1px solid #b3ff41;
+  background-color: #023100;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
   padding: 0.3rem;
   width: 80%;
 }
@@ -152,24 +165,27 @@ body {
   border: 1px solid #b3ff41;
   background-color: #b3ff41;
   overflow: hidden;
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 .success button:hover {
   text-decoration: underline;
 }
 .success span {
+  margin-top: 0.2rem;
   font-size: 0.8rem;
+  color: #fff;
 }
 /* alt */
 .alt {
-  margin-top: 1rem;
+  margin: 1rem;
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 .alt a {
   text-decoration: none;
-  color: #1a1a1a;
-  font-weight: 600;
+  color: var(--l1);
 }
 
 .alt a:hover {
