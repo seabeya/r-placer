@@ -191,3 +191,13 @@ body {
 .alt a:hover {
   text-decoration: underline;
 }
+/* star */
+.star {
+  text-align: center;
+  color: var(--l2);
+  font-size: 0.8rem;
+}
+.star p {
+  max-width: 25rem;
+  margin: 0 auto;
+}
