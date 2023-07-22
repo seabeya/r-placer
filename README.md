@@ -22,6 +22,8 @@ Official subreddit of the "Reddit Place" event: [r/place](https://www.reddit.com
    > You need an image URL that has been previously prepared and shared on image hosting platforms such as Imgur, etc.
 
    > The image URL should end with the correct image format, such as `.png`, `.webp`, etc.
+   
+   > To get the correct URL after a successful upload, right-click and choose either "Copy image address" or "Open image in a new tab," then copy the URL.
 
 3. **Enter the starting X & Y coordinates**
    > The top left starting points for the image on the canvas.
