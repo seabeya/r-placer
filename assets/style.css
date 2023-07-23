@@ -47,8 +47,8 @@ body {
   gap: 1rem;
 }
 .head span {
-  font-size: 3rem;
-  color: var(--main);
+  font-size: 3.5rem;
+  color: #ff4500;
   font-weight: 600;
 }
 /* main */
@@ -61,7 +61,9 @@ body {
 .main-area {
   width: 100%;
   max-width: 650px;
+  text-align: center;
 }
+
 /*  */
 .g-url {
   width: 100%;
@@ -80,7 +82,7 @@ body {
 }
 
 .g-coordinate {
-  margin: 1rem;
+  margin: 1rem 0;
   display: flex;
   justify-content: space-around;
 }
@@ -91,8 +93,9 @@ body {
 .g-coordinate input {
   outline: none;
   width: 50%;
-  max-width: 100px;
+  max-width: 150px;
   border: none;
+  border-radius: 5px;
   border-bottom: 2px solid var(--main);
   background-color: var(--d1);
   color: var(--l1);
@@ -116,57 +119,54 @@ body {
   border: none;
   outline: none;
   font-size: 1.1rem;
-  width: 150px;
+  width: 100%;
+  max-width: 200px;
   padding: 0.3rem 1rem 0.5rem 1rem;
   background-color: var(--main);
   color: var(--l1);
   font-weight: 600;
   border-radius: 5px;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 .g-start button:hover {
-  transition: 0.2s ease;
-  background-color: #e23c00;
+  background-color: #ff1100;
+  box-shadow: 0 1px 12px rgba(255, 255, 255, 0.2);
 }
 
 /* result */
 .result {
   display: none;
   text-align: center;
-  margin-top: 1rem;
-  padding: 1rem 1rem 1.1rem 1rem;
+  margin: 1rem auto;
+  padding: 1rem;
+  opacity: 0;
 }
+
 .error {
   color: red;
   background-color: #ff000033;
   border: 1px solid red;
   font-weight: 600;
 }
+
 .success {
   background-color: #9dff0042;
   border: 1px solid #b3ff41;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  padding: 1rem;
+  opacity: 0;
 }
+
 .success input {
-  outline: none;
-  border: 1px solid #b3ff41;
-  background-color: #023100;
-  color: #fff;
-  font-weight: 600;
-  font-size: 1rem;
-  padding: 0.3rem;
-  width: 80%;
+  width: 70%;
 }
+
 .success button {
-  cursor: pointer;
-  width: 20%;
-  outline: none;
-  border: 1px solid #b3ff41;
-  background-color: #b3ff41;
-  overflow: hidden;
-  font-size: 0.9rem;
-  font-weight: 600;
+  width: 30%;
+  max-width: 150px;
 }
 .success button:hover {
   text-decoration: underline;
@@ -176,9 +176,10 @@ body {
   font-size: 0.8rem;
   color: #fff;
 }
+
 /* alt */
 .alt {
-  margin: 1rem;
+  margin: 1rem auto;
   display: flex;
   justify-content: center;
   gap: 1.5rem;
@@ -187,17 +188,47 @@ body {
   text-decoration: none;
   color: var(--l1);
 }
-
 .alt a:hover {
   text-decoration: underline;
 }
+
 /* star */
 .star {
   text-align: center;
-  color: var(--l2);
-  font-size: 0.8rem;
+  color: #666;
+  font-size: 1rem;
 }
+
 .star p {
   max-width: 25rem;
   margin: 0 auto;
+}
+
+/* Smoothly hide and show main content */
+.s-main.w .main-area {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.s-main:not(.w) .main-area {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.s-main.w .result {
+  display: flex;
+  opacity: 1;
+}
+
+.s-main:not(.w) .result {
+  opacity: 0;
+}
+
+/* Smoothly change error and success appearance */
+.s-main.w .result.success {
+  opacity: 1;
+}
+
+.s-main:not(.w) .result.success {
+  opacity: 0;
 }
