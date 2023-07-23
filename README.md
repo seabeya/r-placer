@@ -34,7 +34,14 @@ Official subreddit of the "Reddit Place" event: [r/place](https://www.reddit.com
 
 _This is a completely browser-based, client-side application. Therefore, you decide whether the image you provided is working and placed correctly._
 
-<br> 
+<br>
+
+### Contributing
+
+> **Warning**:
+> I'm about to refactor the project entirely and add extra tools, some functionalities etc. So, currently, only PRs related to critical functionality fixation are allowed.
+
+<br>
 
 <hr>
 
