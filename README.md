@@ -37,6 +37,8 @@ Works like this:
    > The top left starting points for the image on the canvas.
 4. **Click 'generate'**
    > A new workspace URL will be created for you. When you follow the link, the workspace will be ready for placing the image you provided on the r/place canvas. All you have to do is share the link with your community.
+5. **Also note**
+   > The pixel art generated will consist of all the default colors, but r/place allows redditors to place only a few color pixels. Please make a note of that.
 
 <br>
 
