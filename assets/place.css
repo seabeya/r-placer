@@ -1,0 +1,30 @@
+head,
+body {
+  margin: 0;
+}
+.repo {
+  font-size: 1.2rem;
+  padding: 10px;
+  display: flex;
+  gap: 10px;
+}
+.repo a {
+  text-decoration: none;
+  color: #000;
+  padding: 2px 5px;
+  border: 1px solid #000;
+}
+.repo a:hover {
+  background-color: #ff4500;
+  color: #fff;
+  border-color: #ff4500;
+}
+.place-area {
+  position: relative;
+}
+.place-area > canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: none;
+}
