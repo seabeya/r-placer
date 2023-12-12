@@ -1,14 +1,37 @@
+import { useState } from 'react';
+
 function Error({ data }: { data: string }) {
   return (
-    <p className="text-xs font-medium text-red-600 sm:text-sm xl:text-base">
+    <p className="mt-5 text-xs font-medium text-red-600 sm:text-sm xl:mt-6 xl:text-base">
       {data}
     </p>
   );
 }
 
 function Success({ data }: { data: string }) {
+  const [buttonDisabled, setButtonDisabled] = useState(false);
+
+  const [buttonText, setButtonText] = useState('Copy link');
+
+  const handleCopyClick = async () => {
+    try {
+      setButtonDisabled(true);
+
+      await navigator.clipboard.writeText(data);
+      setButtonText('Copied!');
+
+      setTimeout(() => {
+        setButtonText('Copy link');
+
+        setButtonDisabled(false);
+      }, 2000);
+    } catch (_) {
+      setButtonDisabled(false);
+    }
+  };
+
   return (
-    <div className="w-full max-w-lg border border-[#b3ff41] bg-lime-900 p-4 text-white sm:max-w-lg xl:max-w-none">
+    <div className="mt-5 w-full max-w-lg border border-[#b3ff41] bg-lime-900 p-4 text-white sm:max-w-lg xl:mt-6 xl:max-w-none">
       <div className="flex">
         <input
           type="text"
@@ -17,8 +40,12 @@ function Success({ data }: { data: string }) {
           aria-label="Result"
           readOnly
         />
-        <button className="min-w-max bg-[#b3ff41] px-4 text-sm font-medium text-lime-950 hover:underline xl:text-base">
-          Copy link
+        <button
+          onClick={handleCopyClick}
+          disabled={buttonDisabled}
+          className="min-w-max bg-[#b3ff41] px-4 text-sm font-medium text-lime-950 hover:underline xl:text-base"
+        >
+          {buttonText}
         </button>
       </div>
       <p className="mt-1 text-center text-xs sm:text-sm">
