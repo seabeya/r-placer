@@ -11,7 +11,7 @@ export default function Footer() {
           How to use?
         </a>
         <a
-          href="https://github.com/seabeya/r-placer#how-to-use"
+          href="https://github.com/seabeya/r-placer"
           target="_blank"
           rel="noopener noreferrer"
           className="ml-6 hover:underline"
