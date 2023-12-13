@@ -21,7 +21,7 @@
     font-weight: 500;
     src: url('/fonts/Inter-Medium.ttf') format('truetype');
   }
-  html {
+  body {
     @apply bg-[#0D1117];
   }
 
