@@ -37,6 +37,8 @@ Here's how it works:
    > The top-left starting points for the image on the canvas.
 4. **Click "generate"**
    > A new workspace URL will be created for you. When you follow the link, the workspace will be ready for placing the image you provided on the r/place canvas. Share the link with others to work together.
+   > 
+   > Here is an example workspace link: https://r-placer.seabeya.com/workspace/?url=https%3A%2F%2Fr-placer.seabeya.com%2Ffavicon.ico&x=0&y=0
 
 <br>
 
