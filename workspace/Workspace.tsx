@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { generateCanvas } from './place.ts';
+import { Place } from './Place.ts';
 import IconRPlacer from '../src/assets/IconRPlacer.tsx';
 
 function NavBtn({ label, url }: { label: string; url: string }) {
@@ -28,8 +28,14 @@ function Workspace() {
 
   useEffect(() => {
     if (url && x && y && !isNaN(+x) && !isNaN(+y)) {
-      // Generate Canvas:
-      generateCanvas(canvas_back.current!, canvas_front.current!, url, +x, +y);
+      const place = new Place({
+        canvas_bg_element: canvas_back.current!,
+        canvas_fg_element: canvas_front.current!,
+        imgUrl: url,
+        start_x: +x,
+        start_y: +y,
+      });
+      place.generate();
     } else {
       location.href = 'https://r-placer.seabeya.com';
     }
