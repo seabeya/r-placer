@@ -2,65 +2,69 @@ import { useState } from 'react';
 
 function Error({ data }: { data: string }) {
   return (
-    <p className="mt-5 text-xs font-medium text-red-600 sm:text-sm xl:mt-6 xl:text-base">
-      {data}
+    <p className="mt-5 text-center text-xs font-medium text-red-500 sm:text-sm xl:text-base">
+      {`Error: ${data}`}
     </p>
   );
 }
 
 function Success({ data }: { data: string }) {
-  const [buttonDisabled, setButtonDisabled] = useState(false);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
-  const [buttonText, setButtonText] = useState('Copy link');
+  const [buttonText, setButtonText] = useState('Copy to Clipboard');
 
   const handleCopyClick = async () => {
-    try {
-      setButtonDisabled(true);
+    setIsButtonDisabled(true);
 
+    try {
       await navigator.clipboard.writeText(data);
       setButtonText('Copied!');
 
       setTimeout(() => {
-        setButtonText('Copy link');
+        setButtonText('Copy to Clipboard');
 
-        setButtonDisabled(false);
+        setIsButtonDisabled(false);
       }, 2000);
     } catch (_) {
-      setButtonDisabled(false);
+      setIsButtonDisabled(false);
     }
   };
 
   return (
-    <div className="mt-5 w-full max-w-lg border border-[#b3ff41] bg-lime-900 p-4 text-white sm:max-w-lg xl:mt-6 xl:max-w-none">
-      <div className="flex">
-        <input
-          type="text"
-          value={data}
-          className="w-full border border-[#b3ff41] bg-green-950 px-2 py-1 text-xs outline-none sm:text-sm xl:text-base"
-          aria-label="Result"
-          readOnly
-        />
+    <div className="mt-5 overflow-hidden border-2 border-dashed border-gray-700 p-4 text-sm text-white sm:text-base">
+      <input
+        type="url"
+        value={data}
+        aria-label="Workspace URL"
+        readOnly
+        className="w-full border-b border-dashed border-gray-500 bg-transparent p-1 text-gray-300 outline-none"
+      />
+      <p className="mt-2 text-center text-xs sm:text-sm">
+        Share this link with others to collaborate.
+      </p>
+      <div className="mt-3 flex items-center justify-center gap-2">
         <button
           onClick={handleCopyClick}
-          disabled={buttonDisabled}
-          className="min-w-max bg-[#b3ff41] px-4 text-sm font-medium text-lime-950 hover:underline xl:text-base"
+          disabled={isButtonDisabled}
+          className="min-w-max border border-gray-600 px-2 py-1 hover:border-gray-500"
         >
           {buttonText}
         </button>
+        <a
+          href={data}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="min-w-max border border-gray-600 px-2 py-1 hover:border-gray-500"
+        >
+          Open
+        </a>
       </div>
-      <p className="mt-1 text-center text-xs sm:text-sm">
-        Share this link with others to collaborate.
-      </p>
     </div>
   );
 }
 
-export default function Result({
-  data,
-  success,
-}: {
-  data: string;
-  success?: boolean;
-}) {
+function Result({ success, data }: { success: boolean; data: string }) {
   return success ? <Success data={data} /> : <Error data={data} />;
 }
+
+export default Result;
