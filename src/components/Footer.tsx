@@ -31,7 +31,7 @@ export default function Footer() {
       >
         {`© ${new Date().getFullYear()} Sha'an Aliyev / `}
         <a
-          href={CONSTS.mainPageUrl}
+          href="https://www.seabeya.com/"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:underline"
