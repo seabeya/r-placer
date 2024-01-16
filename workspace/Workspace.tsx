@@ -1,5 +1,7 @@
 import { useEffect, useRef } from 'react';
 
+import CONSTS from '../src/consts.ts';
+
 import { Place } from './Place.ts';
 
 import IconRPlacer from '../src/assets/IconRPlacer.tsx';
@@ -29,17 +31,14 @@ function Workspace() {
       });
       place.generate();
     } else {
-      location.href = 'https://r-placer.seabeya.com';
+      location.href = CONSTS.mainPageUrl;
     }
   }, []);
 
   return (
     <>
       <div className="fixed top-0 z-10 flex w-full items-center justify-around gap-2 bg-gray-100 bg-opacity-95 py-1">
-        <a
-          href="https://r-placer.seabeya.com"
-          className="flex items-center gap-2"
-        >
+        <a href={CONSTS.mainPageUrl} className="flex items-center gap-2">
           <IconRPlacer className="h-7 w-7 shrink-0 sm:h-8 sm:w-8" />
           <span className="min-w-max text-lg font-medium sm:text-xl">
             R-Placer
@@ -47,13 +46,13 @@ function Workspace() {
         </a>
         <div className="flex items-center gap-4">
           <NavBtn
-            href="https://r-placer.seabeya.com"
+            href={CONSTS.mainPageUrl}
             className="rounded-md px-4  py-1 sm:py-2"
           >
             Main Page
           </NavBtn>
           <NavBtn
-            href="https://github.com/seabeya/r-placer"
+            href={CONSTS.githubUrl}
             className="flex items-center justify-center gap-2 rounded-full py-1 pl-1 pr-4"
           >
             <IconGithub className="h-5 w-5 shrink-0 sm:h-6 sm:w-6" />

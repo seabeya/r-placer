@@ -1,3 +1,5 @@
+import CONSTS from '../consts.ts';
+
 export const validateImage = (imageUrl: string): Promise<void> => {
   return new Promise((resolve, reject) => {
     const img = new Image();
@@ -31,7 +33,7 @@ export const buildWorkspaceUrl = (
   x: string,
   y: string,
 ): string => {
-  const link = new URL('https://r-placer.seabeya.com/workspace/');
+  const link = new URL(CONSTS.workspacePageUrl);
   link.searchParams.append('url', url);
   link.searchParams.append('x', x);
   link.searchParams.append('y', y);

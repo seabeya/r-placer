@@ -1,9 +1,11 @@
+import CONSTS from '../consts.ts';
+
 export default function Footer() {
   return (
     <footer className="mt-5">
       <div className="text-center text-sm text-white sm:text-base">
         <a
-          href="https://github.com/seabeya/r-placer#how-to-use"
+          href={`${CONSTS.githubUrl}#how-to-use`}
           target="_blank"
           rel="noopener noreferrer"
           className="hover:underline"
@@ -11,7 +13,7 @@ export default function Footer() {
           How to use?
         </a>
         <a
-          href="https://github.com/seabeya/r-placer"
+          href={CONSTS.githubUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="ml-6 hover:underline"
@@ -29,7 +31,7 @@ export default function Footer() {
       >
         {`© ${new Date().getFullYear()} Sha'an Aliyev / `}
         <a
-          href="https://www.seabeya.com/"
+          href={CONSTS.mainPageUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="hover:underline"

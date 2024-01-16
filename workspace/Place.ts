@@ -1,3 +1,5 @@
+import CONSTS from '../src/consts.ts';
+
 interface IPlaceInput {
   canvas_bg_element: HTMLCanvasElement;
   canvas_fg_element: HTMLCanvasElement;
@@ -205,7 +207,7 @@ export class Place {
     };
 
     img.onerror = () => {
-      location.href = 'https://r-placer.seabeya.com';
+      location.href = CONSTS.mainPageUrl;
     };
   };
 }
