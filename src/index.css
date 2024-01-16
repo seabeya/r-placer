@@ -3,12 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  /* Light */
-  @font-face {
-    font-family: 'Inter';
-    font-weight: 300;
-    src: url('/fonts/Inter-Light.ttf') format('truetype');
-  }
   /* Regular */
   @font-face {
     font-family: 'Inter';

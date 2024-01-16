@@ -1,19 +1,13 @@
 import { useEffect, useRef } from 'react';
-import { Place } from './Place.ts';
-import IconRPlacer from '../src/assets/IconRPlacer.tsx';
 
-function NavBtn({ label, url }: { label: string; url: string }) {
-  return (
-    <a
-      href={url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="-mt-1 min-w-max text-xs underline hover:text-[#FF4500] sm:text-sm xl:text-base"
-    >
-      {label}
-    </a>
-  );
-}
+import CONSTS from '../src/consts.ts';
+
+import { Place } from './Place.ts';
+
+import IconRPlacer from '../src/assets/IconRPlacer.tsx';
+import IconGithub from '../src/assets/IconGithub.tsx';
+
+import NavBtn from './NavBtn.tsx';
 
 function Workspace() {
   const canvas_back = useRef<HTMLCanvasElement>(null);
@@ -37,19 +31,34 @@ function Workspace() {
       });
       place.generate();
     } else {
-      location.href = 'https://r-placer.seabeya.com';
+      location.href = CONSTS.mainPageUrl;
     }
   }, []);
 
   return (
     <>
-      <div className="fixed top-0 z-10 flex w-full items-center justify-around bg-[rgba(255,255,255,0.9)] p-1 shadow-lg">
+      <div className="fixed top-0 z-10 flex w-full items-center justify-around gap-2 bg-gray-100 bg-opacity-95 py-1">
+        <a href={CONSTS.mainPageUrl} className="flex items-center gap-2">
+          <IconRPlacer className="h-7 w-7 shrink-0 sm:h-8 sm:w-8" />
+          <span className="min-w-max text-lg font-medium sm:text-xl">
+            R-Placer
+          </span>
+        </a>
         <div className="flex items-center gap-4">
-          <IconRPlacer className="h-7 w-7" />
-          <NavBtn label="Main Page" url="https://r-placer.seabeya.com" />
-          <NavBtn label="GitHub" url="https://github.com/seabeya/r-placer" />
+          <NavBtn
+            href={CONSTS.mainPageUrl}
+            className="rounded-md px-4  py-1 sm:py-2"
+          >
+            Main Page
+          </NavBtn>
+          <NavBtn
+            href={CONSTS.githubUrl}
+            className="flex items-center justify-center gap-2 rounded-full py-1 pl-1 pr-4"
+          >
+            <IconGithub className="h-5 w-5 shrink-0 sm:h-6 sm:w-6" />
+            Github
+          </NavBtn>
         </div>
-        <NavBtn label="seabeya.com" url="https://www.seabeya.com" />
       </div>
       <canvas ref={canvas_back} className="absolute left-0 top-0"></canvas>
       <canvas ref={canvas_front} className="absolute cursor-none"></canvas>
