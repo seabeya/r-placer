@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 function Error({ data }: { data: string }) {
   return (
-    <p className="mt-5 text-center text-xs font-medium text-red-500 sm:text-sm xl:text-base">
+    <p className="mt-5 text-center text-sm font-medium text-red-500 sm:text-base">
       {`Error: ${data}`}
     </p>
   );
