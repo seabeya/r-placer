@@ -9,8 +9,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        workspace: resolve(__dirname, 'workspace/index.html'),
-      },
-    },
-  },
+        workspace: resolve(__dirname, 'workspace/index.html')
+      }
+    }
+  }
 });

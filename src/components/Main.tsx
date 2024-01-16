@@ -4,18 +4,14 @@ import Input from './sub/Input.tsx';
 import Button from './sub/Button.tsx';
 import Result from './sub/Result.tsx';
 
-import {
-  buildWorkspaceUrl,
-  validateCoordinates,
-  validateImage,
-} from '../utils/utils.ts';
+import { buildWorkspaceUrl, validateCoordinates, validateImage } from '../utils/utils.ts';
 
 export default function Main() {
   // General Details:
   const [details, setDetails] = useState({
     url: '',
     x: '',
-    y: '',
+    y: ''
   });
 
   // Inputs:
@@ -39,7 +35,7 @@ export default function Main() {
   }>({
     show: false,
     success: false,
-    data: '',
+    data: ''
   });
 
   // Form Submission:
@@ -65,10 +61,7 @@ export default function Main() {
 
   return (
     <main className="mt-12 p-1 sm:mt-14">
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-wrap justify-center gap-6"
-      >
+      <form onSubmit={handleSubmit} className="flex flex-wrap justify-center gap-6">
         <Input
           name="url"
           type="url"

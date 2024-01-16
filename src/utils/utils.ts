@@ -28,11 +28,7 @@ export const validateCoordinates = (x: string, y: string): Promise<void> => {
   });
 };
 
-export const buildWorkspaceUrl = (
-  url: string,
-  x: string,
-  y: string,
-): string => {
+export const buildWorkspaceUrl = (url: string, x: string, y: string): string => {
   const link = new URL(CONSTS.workspacePageUrl);
   link.searchParams.append('url', url);
   link.searchParams.append('x', x);

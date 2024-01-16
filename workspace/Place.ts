@@ -26,13 +26,7 @@ export class Place {
   private bg: CanvasRenderingContext2D;
   private fg: CanvasRenderingContext2D;
 
-  constructor({
-    canvas_bg_element,
-    canvas_fg_element,
-    imgUrl,
-    start_x,
-    start_y,
-  }: IPlaceInput) {
+  constructor({ canvas_bg_element, canvas_fg_element, imgUrl, start_x, start_y }: IPlaceInput) {
     this.canvas_bg_element = canvas_bg_element;
     this.canvas_fg_element = canvas_fg_element;
     this.imgUrl = imgUrl;
@@ -56,12 +50,8 @@ export class Place {
 
   private getMousePosition = (event: MouseEvent) => {
     const rect = this.canvas_fg_element.getBoundingClientRect();
-    const x =
-      ((event.clientX - rect.left - 15) / (rect.right - rect.left)) *
-      this.canvas_fg_element.width;
-    const y =
-      ((event.clientY - rect.top) / (rect.bottom - rect.top)) *
-      this.canvas_fg_element.height;
+    const x = ((event.clientX - rect.left - 15) / (rect.right - rect.left)) * this.canvas_fg_element.width;
+    const y = ((event.clientY - rect.top) / (rect.bottom - rect.top)) * this.canvas_fg_element.height;
     return { x, y };
   };
 
@@ -70,11 +60,7 @@ export class Place {
       // Vertical:
       this.bg.moveTo(x, this.Y_OFFSET);
       this.bg.lineTo(x, img_h + this.Y_OFFSET);
-      for (
-        let y = this.Y_OFFSET;
-        y <= img_h + this.Y_OFFSET;
-        y += this.ONE_PIXEL
-      ) {
+      for (let y = this.Y_OFFSET; y <= img_h + this.Y_OFFSET; y += this.ONE_PIXEL) {
         // Horizontal:
         this.bg.moveTo(0, y);
         this.bg.lineTo(img_w, y);
@@ -107,18 +93,11 @@ export class Place {
 
       if (
         Math.floor(p.x / this.ONE_PIXEL) + this.X_TOP_LEFT >= this.start_x &&
-        Math.floor((p.y - this.Y_OFFSET) / this.ONE_PIXEL) + this.Y_TOP_LEFT >=
-          this.start_y &&
-        Math.floor(p.x / this.ONE_PIXEL) + this.X_TOP_LEFT <
-          img.width + this.start_x &&
-        Math.floor((p.y - this.Y_OFFSET) / this.ONE_PIXEL) + this.Y_TOP_LEFT <
-          img.height + this.start_y
+        Math.floor((p.y - this.Y_OFFSET) / this.ONE_PIXEL) + this.Y_TOP_LEFT >= this.start_y &&
+        Math.floor(p.x / this.ONE_PIXEL) + this.X_TOP_LEFT < img.width + this.start_x &&
+        Math.floor((p.y - this.Y_OFFSET) / this.ONE_PIXEL) + this.Y_TOP_LEFT < img.height + this.start_y
       ) {
-        this.drawText(
-          '(' + (x + this.X_TOP_LEFT) + ', ' + (y + this.Y_TOP_LEFT) + ')',
-          p.x + 50,
-          p.y - 15,
-        );
+        this.drawText('(' + (x + this.X_TOP_LEFT) + ', ' + (y + this.Y_TOP_LEFT) + ')', p.x + 50, p.y - 15);
       }
 
       this.fg.lineWidth = 2;
@@ -127,26 +106,12 @@ export class Place {
 
       this.fg.beginPath();
       this.fg.strokeStyle = 'white';
-      this.fg.arc(
-        circle_x,
-        circle_y,
-        this.ONE_PIXEL - 6,
-        0,
-        2 * Math.PI,
-        false,
-      );
+      this.fg.arc(circle_x, circle_y, this.ONE_PIXEL - 6, 0, 2 * Math.PI, false);
       this.fg.stroke();
 
       this.fg.beginPath();
       this.fg.strokeStyle = 'black';
-      this.fg.arc(
-        circle_x,
-        circle_y,
-        this.ONE_PIXEL - 4,
-        0,
-        2 * Math.PI,
-        false,
-      );
+      this.fg.arc(circle_x, circle_y, this.ONE_PIXEL - 4, 0, 2 * Math.PI, false);
       this.fg.stroke();
     });
   };
@@ -155,20 +120,9 @@ export class Place {
     this.canvas_fg_element.addEventListener('click', (event) => {
       const p = this.getMousePosition(event);
       const x = Math.floor(p.x / this.ONE_PIXEL) + this.X_TOP_LEFT;
-      const y =
-        Math.floor((p.y - this.Y_OFFSET) / this.ONE_PIXEL) + this.Y_TOP_LEFT;
-      if (
-        x >= this.start_x &&
-        y >= this.start_y &&
-        x < img.width + this.start_x &&
-        y < img.height + this.start_y
-      ) {
-        const url =
-          'https://new.reddit.com/r/place/?cx=' +
-          x +
-          '&cy=' +
-          y +
-          '&px=15&screenmode=fullscreen';
+      const y = Math.floor((p.y - this.Y_OFFSET) / this.ONE_PIXEL) + this.Y_TOP_LEFT;
+      if (x >= this.start_x && y >= this.start_y && x < img.width + this.start_x && y < img.height + this.start_y) {
+        const url = 'https://new.reddit.com/r/place/?cx=' + x + '&cy=' + y + '&px=15&screenmode=fullscreen';
         window.open(url, '_blank');
       }
     });
@@ -189,17 +143,7 @@ export class Place {
       this.fg.canvas.height = this.bg.canvas.height;
       this.bg.imageSmoothingEnabled = false;
 
-      this.bg.drawImage(
-        img,
-        0,
-        0,
-        img.width,
-        img.height,
-        0,
-        this.Y_OFFSET,
-        img_w,
-        img_h,
-      );
+      this.bg.drawImage(img, 0, 0, img.width, img.height, 0, this.Y_OFFSET, img_w, img_h);
       this.drawGrid(img_w, img_h);
 
       this.mouseMoveAction(img);

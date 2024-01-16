@@ -9,14 +9,7 @@ type InputProps = {
   className?: string;
 };
 
-function Input({
-  name,
-  type,
-  placeholder,
-  value,
-  onChange,
-  className,
-}: InputProps) {
+function Input({ name, type, placeholder, value, onChange, className }: InputProps) {
   return (
     <input
       name={name}

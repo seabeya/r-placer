@@ -1,11 +1,7 @@
 import { useState } from 'react';
 
 function Error({ data }: { data: string }) {
-  return (
-    <p className="mt-5 text-center text-sm font-medium text-red-500 sm:text-base">
-      {`Error: ${data}`}
-    </p>
-  );
+  return <p className="mt-5 text-center text-sm font-medium text-red-500 sm:text-base">{`Error: ${data}`}</p>;
 }
 
 function Success({ data }: { data: string }) {
@@ -39,9 +35,7 @@ function Success({ data }: { data: string }) {
         readOnly
         className="w-full border-b border-dashed border-gray-500 bg-transparent p-1 text-gray-300 outline-none"
       />
-      <p className="mt-2 text-center text-xs sm:text-sm">
-        Share this link with others to collaborate.
-      </p>
+      <p className="mt-2 text-center text-xs sm:text-sm">Share this link with others to collaborate.</p>
       <div className="mt-3 flex items-center justify-center gap-2">
         <button
           onClick={handleCopyClick}

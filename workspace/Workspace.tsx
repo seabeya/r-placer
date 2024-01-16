@@ -27,12 +27,13 @@ function Workspace() {
         canvas_fg_element: canvas_front.current!,
         imgUrl: url,
         start_x: +x,
-        start_y: +y,
+        start_y: +y
       });
       place.generate();
     } else {
       location.href = CONSTS.mainPageUrl;
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -40,15 +41,10 @@ function Workspace() {
       <div className="fixed top-0 z-10 flex w-full items-center justify-around gap-2 bg-gray-100 bg-opacity-95 py-1">
         <a href={CONSTS.mainPageUrl} className="flex items-center gap-2">
           <IconRPlacer className="h-7 w-7 shrink-0 sm:h-8 sm:w-8" />
-          <span className="min-w-max text-lg font-medium sm:text-xl">
-            R-Placer
-          </span>
+          <span className="min-w-max text-lg font-medium sm:text-xl">R-Placer</span>
         </a>
         <div className="flex items-center gap-4">
-          <NavBtn
-            href={CONSTS.mainPageUrl}
-            className="rounded-md px-4  py-1 sm:py-2"
-          >
+          <NavBtn href={CONSTS.mainPageUrl} className="rounded-md px-4  py-1 sm:py-2">
             Main Page
           </NavBtn>
           <NavBtn
