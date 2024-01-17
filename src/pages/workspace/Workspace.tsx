@@ -5,22 +5,24 @@ import CONSTS from '@global/consts.ts';
 import IconRPlacer from '@assets/IconRPlacer.tsx';
 import IconGithub from '@assets/IconGithub.tsx';
 
-import { Place } from '@p/workspace/utils/Place.ts';
 import NavBtn from '@p/workspace/components/NavBtn.tsx';
+
+import { getInputsFromURL } from '@p/workspace/utils/utils.ts';
+import { checkInputs } from '@global/utils.ts';
+
+import { Place } from '@p/workspace/utils/Place.ts';
 
 function Workspace() {
   const canvas_back = useRef<HTMLCanvasElement>(null);
   const canvas_front = useRef<HTMLCanvasElement>(null);
 
-  // Getting data:
+  // Get data:
   const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
-  const url = urlParams.get('url')!;
-  const x = urlParams.get('x');
-  const y = urlParams.get('y');
+  const { url, x, y } = getInputsFromURL(queryString);
 
   useEffect(() => {
-    if (url && x && y && !isNaN(+x) && !isNaN(+y)) {
+    // Check inputs:
+    if (checkInputs(url, x, y).status) {
       const place = new Place({
         canvas_bg_element: canvas_back.current!,
         canvas_fg_element: canvas_front.current!,
