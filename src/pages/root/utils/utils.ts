@@ -1,4 +1,4 @@
-import CONSTS from '../../../global/consts.ts';
+import CONSTS from '@global/consts.ts';
 
 export const validateImage = (imageUrl: string): Promise<void> => {
   return new Promise((resolve, reject) => {

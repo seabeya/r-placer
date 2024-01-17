@@ -1,8 +1,8 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 
-import Input from './sub/Input.tsx';
-import Button from './sub/Button.tsx';
-import Result from './sub/Result.tsx';
+import Input from '@p/root/components/sub/Input.tsx';
+import Button from '@p/root/components/sub/Button.tsx';
+import Result from '@p/root/components/sub/Result.tsx';
 
 import { buildWorkspaceUrl, validateCoordinates, validateImage } from '../utils/utils.ts';
 

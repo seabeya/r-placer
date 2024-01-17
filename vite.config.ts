@@ -12,5 +12,14 @@ export default defineConfig({
         workspace: resolve(__dirname, 'workspace/index.html')
       }
     }
+  },
+  resolve: {
+    // Path Aliases
+    alias: {
+      '@assets': resolve(__dirname, 'src/assets'),
+      '@global': resolve(__dirname, 'src/global'),
+      '@p/root': resolve(__dirname, 'src/pages/root'),
+      '@p/workspace': resolve(__dirname, 'src/pages/workspace')
+    }
   }
 });
