@@ -8,7 +8,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'index.html'),
+        root: resolve(__dirname, 'index.html'),
         workspace: resolve(__dirname, 'workspace/index.html')
       }
     }

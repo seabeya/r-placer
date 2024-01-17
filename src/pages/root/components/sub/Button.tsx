@@ -1,4 +1,4 @@
-import IconRightArrow from '../../assets/IconRightArrow.tsx';
+import IconRightArrow from '../../../../assets/IconRightArrow.tsx';
 
 type ButtonProps = {
   isDisabled: boolean;

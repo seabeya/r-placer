@@ -1,4 +1,4 @@
-import CONSTS from '../src/consts.ts';
+import CONSTS from '../../../global/consts.ts';
 
 interface IPlaceInput {
   canvas_bg_element: HTMLCanvasElement;

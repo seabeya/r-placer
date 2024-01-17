@@ -1,4 +1,4 @@
-import CONSTS from '../consts.ts';
+import CONSTS from '../../../global/consts.ts';
 
 export default function Footer() {
   return (

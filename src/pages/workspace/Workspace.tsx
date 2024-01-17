@@ -1,13 +1,13 @@
 import { useEffect, useRef } from 'react';
 
-import CONSTS from '../src/consts.ts';
+import CONSTS from '../../global/consts.ts';
 
-import { Place } from './Place.ts';
+import { Place } from './utils/Place.ts';
 
-import IconRPlacer from '../src/assets/IconRPlacer.tsx';
-import IconGithub from '../src/assets/IconGithub.tsx';
+import IconRPlacer from '../../assets/IconRPlacer.tsx';
+import IconGithub from '../../assets/IconGithub.tsx';
 
-import NavBtn from './NavBtn.tsx';
+import NavBtn from './components/NavBtn.tsx';
 
 function Workspace() {
   const canvas_back = useRef<HTMLCanvasElement>(null);

@@ -1,4 +1,4 @@
-import IconRPlacer from '../assets/IconRPlacer.tsx';
+import IconRPlacer from '../../../assets/IconRPlacer.tsx';
 
 export default function Head() {
   return (
