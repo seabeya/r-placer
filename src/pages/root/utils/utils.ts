@@ -15,19 +15,6 @@ export const validateImage = (imageUrl: string): Promise<void> => {
   });
 };
 
-export const validateCoordinates = (x: string, y: string): Promise<void> => {
-  return new Promise((resolve, reject) => {
-    const xNumber = Number(x);
-    const yNumber = Number(y);
-
-    if (isNaN(xNumber) || isNaN(yNumber)) {
-      reject('Invalid coordinates');
-    } else {
-      resolve();
-    }
-  });
-};
-
 export const buildWorkspaceUrl = (url: string, x: string, y: string): string => {
   const link = new URL(CONSTS.workspacePageUrl);
   link.searchParams.append('url', url);

@@ -4,7 +4,8 @@ import Input from '@p/root/components/sub/Input.tsx';
 import Button from '@p/root/components/sub/Button.tsx';
 import Result from '@p/root/components/sub/Result.tsx';
 
-import { buildWorkspaceUrl, validateCoordinates, validateImage } from '../utils/utils.ts';
+import { buildWorkspaceUrl, validateImage } from '@p/root/utils/utils.ts';
+import { checkInputs } from '@global/utils.ts';
 
 export default function Main() {
   // General Details:
@@ -42,11 +43,17 @@ export default function Main() {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    // Check if inputs are valid:
+    const checkResult = checkInputs(details.url, details.x, details.y);
+    if (checkResult.status === false) {
+      setResult({ show: true, success: false, data: checkResult.message });
+      return;
+    }
+
     setIsButtonDisabled(true);
 
     try {
       await validateImage(details.url);
-      await validateCoordinates(details.x, details.y);
 
       const workspaceUrl = buildWorkspaceUrl(details.url, details.x, details.y);
       setResult({ show: true, success: true, data: workspaceUrl });
