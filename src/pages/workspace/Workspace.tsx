@@ -15,7 +15,7 @@ function Workspace() {
   // Getting data:
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
-  const url = urlParams.get('url');
+  const url = urlParams.get('url')!;
   const x = urlParams.get('x');
   const y = urlParams.get('y');
 
@@ -37,21 +37,20 @@ function Workspace() {
 
   return (
     <>
-      <div className="fixed top-0 z-10 flex w-full items-center justify-around gap-2 bg-gray-100 bg-opacity-95 py-1">
+      <div className="fixed top-0 z-10 flex w-full items-center justify-around gap-2 bg-gray-100 bg-opacity-95 py-2">
         <a href={CONSTS.mainPageUrl} className="flex items-center gap-2">
           <IconRPlacer className="h-7 w-7 shrink-0 sm:h-8 sm:w-8" />
           <span className="min-w-max text-lg font-medium sm:text-xl">R-Placer</span>
         </a>
-        <div className="flex items-center gap-4">
-          <NavBtn href={CONSTS.mainPageUrl} className="rounded-md px-4  py-1 sm:py-2">
-            Main Page
+        <div className="flex items-center gap-2">
+          <NavBtn href={decodeURIComponent(url)} className="rounded-md px-2">
+            Raw Image
           </NavBtn>
-          <NavBtn
-            href={CONSTS.githubUrl}
-            className="flex items-center justify-center gap-2 rounded-full py-1 pl-1 pr-4"
-          >
+          <NavBtn href={CONSTS.mainPageUrl} className="rounded-md px-2">
+            Home
+          </NavBtn>
+          <NavBtn href={CONSTS.githubUrl} className="rounded-full px-1">
             <IconGithub className="h-5 w-5 shrink-0 sm:h-6 sm:w-6" />
-            Github
           </NavBtn>
         </div>
       </div>

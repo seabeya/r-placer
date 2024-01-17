@@ -10,7 +10,7 @@ function NavBtn({ children, href, className }: NavBtnProps) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`min-w-max border bg-white text-sm duration-75 hover:border-gray-300 hover:bg-gray-100 sm:text-base ${className}`}
+      className={`min-w-max border bg-white py-1 text-sm duration-75 hover:border-gray-300 hover:bg-gray-100 sm:text-base ${className}`}
     >
       {children}
     </a>
