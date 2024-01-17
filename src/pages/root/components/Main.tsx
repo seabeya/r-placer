@@ -4,7 +4,7 @@ import Input from '@p/root/components/sub/Input.tsx';
 import Button from '@p/root/components/sub/Button.tsx';
 import Result from '@p/root/components/sub/Result.tsx';
 
-import { buildWorkspaceUrl, validateImage } from '@p/root/utils/utils.ts';
+import { buildWorkspaceUrl, checkImage } from '@p/root/utils/utils.ts';
 import { checkInputs } from '@global/utils.ts';
 
 export default function Main() {
@@ -53,7 +53,7 @@ export default function Main() {
     setIsButtonDisabled(true);
 
     try {
-      await validateImage(details.url);
+      await checkImage(details.url);
 
       const workspaceUrl = buildWorkspaceUrl(details.url, details.x, details.y);
       setResult({ show: true, success: true, data: workspaceUrl });
