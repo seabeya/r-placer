@@ -19,6 +19,14 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
+
+    /* Path Aliases */
+    "baseUrl": "./src",
+    "paths": {
+      "@global/*": ["global/*"],
+      "@root/*": ["pages/root/*"],
+      "@workspace/*": ["pages/workspace/*"],
+    },
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }],
