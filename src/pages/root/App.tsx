@@ -1,8 +1,11 @@
+import Layout from '@root/components/Layout.tsx';
+import Header from '@root/components/Header.tsx';
+
 function App() {
   return (
-    <>
-      <h1 className="text-5xl text-red-500">R-Placer</h1>
-    </>
+    <Layout>
+      <Header />
+    </Layout>
   );
 }
 
