@@ -1,5 +1,6 @@
 import Input from '@root/components/parts/Input.tsx';
 import Button from '@root/components/parts/Button.tsx';
+import Result from '@root/components/Result.tsx';
 
 function Main() {
   return (
@@ -39,6 +40,7 @@ function Main() {
           <Button isDisabled={false}>Generate</Button>
         </div>
       </form>
+      {true && <Result isError={true} data="Result Data" />}
     </main>
   );
 }
