@@ -3,6 +3,7 @@ import Input from '@root/components/parts/Input.tsx';
 import Button from '@root/components/parts/Button.tsx';
 import Result from '@root/components/Result.tsx';
 import { buildWorkspaceUrl, checkImage, checkInputs } from '@global/utils.ts';
+import { throwFalsey } from '@global/helpers.ts';
 
 function Main() {
   // States:
@@ -33,16 +34,12 @@ function Main() {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    // Check if inputs are valid:
-    const checkInputsResult = checkInputs(inputData.url, inputData.x, inputData.y);
-    if (checkInputsResult.status === false) {
-      setResult({ show: true, error: true, data: checkInputsResult.message });
-      return;
-    }
-
     setIsDisabled(true);
 
     try {
+      // Check if inputs are valid:
+      throwFalsey(checkInputs(inputData.url, inputData.x, inputData.y));
+
       // Check if image is valid:
       await checkImage(inputData.url);
 
