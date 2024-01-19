@@ -17,8 +17,8 @@ function Main() {
           className="w-full"
         />
         <Input
-          name="number"
-          type="x"
+          name="x"
+          type="number"
           placeholder="Starting X"
           value=""
           onChange={() => {
@@ -27,8 +27,8 @@ function Main() {
           className="w-1/3"
         />
         <Input
-          name="number"
-          type="x"
+          name="y"
+          type="number"
           placeholder="Starting Y"
           value=""
           onChange={() => {
