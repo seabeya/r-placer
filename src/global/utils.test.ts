@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
 import { describe, expect, it, vi, beforeEach } from 'vitest';
-import { checkInputs, checkImage, buildWorkspaceUrl } from './utils.ts';
+import { checkInputs, checkImage, buildWorkspaceUrl, getInputsFromUrl } from './utils.ts';
 
 import CONSTS from './consts.ts';
 
@@ -128,5 +128,25 @@ describe('fn buildWorkspaceUrl', () => {
     const actual = buildWorkspaceUrl(url, x, y);
 
     expect(actual).toBe(expected);
+  });
+});
+
+describe('fn getInputsFromUrl', () => {
+  it('should return the correct values from queryString', () => {
+    const queryString = 'url=https%3A%2F%2Fexample.com&x=10&y=20';
+
+    const expected = { url: 'https://example.com', x: '10', y: '20' };
+    const actual = getInputsFromUrl(queryString);
+
+    expect(actual).toEqual(expected);
+  });
+
+  it('should return empty values if the wort case: queryString is empty', () => {
+    const queryString = '';
+
+    const expected = { url: '', x: '', y: '' };
+    const actual = getInputsFromUrl(queryString);
+
+    expect(actual).toEqual(expected);
   });
 });
