@@ -1,7 +1,9 @@
 // @vitest-environment jsdom
 
 import { describe, expect, it, vi, beforeEach, afterEach, MockInstance } from 'vitest';
-import { checkInputs, checkImage } from './utils.ts';
+import { checkInputs, checkImage, buildWorkspaceUrl } from './utils.ts';
+
+import CONSTS from './consts.ts';
 
 describe('fn checkInputs', () => {
   const url = 'https://example.com';
@@ -91,5 +93,29 @@ describe('fn checkImage', () => {
     setImmediate(() => img.onerror?.(new Event('error')));
 
     await expect(checkImage('')).rejects.toEqual('Image not found');
+  });
+});
+
+describe('fn buildWorkspaceUrl', () => {
+  it('should build a valid workspace url', () => {
+    const url = 'https://example.com';
+    const x = '10';
+    const y = '20';
+
+    const expected = `${CONSTS.workspace_page_url}?url=${encodeURIComponent(url)}&x=${x}&y=${y}`;
+    const actual = buildWorkspaceUrl(url, x, y);
+
+    expect(actual).toBe(expected);
+  });
+
+  it('should build a workspace url with empty values if the worst case: input values are empty', () => {
+    const url = '';
+    const x = '';
+    const y = '';
+
+    const expected = `${CONSTS.workspace_page_url}?url=&x=&y=`;
+    const actual = buildWorkspaceUrl(url, x, y);
+
+    expect(actual).toBe(expected);
   });
 });
