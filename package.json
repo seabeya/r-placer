@@ -5,9 +5,10 @@
   "scripts": {
     "dev": "vite --host",
     "build": "tsc && vite build",
-    "lint": "prettier --check . && eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "format": "prettier --write .",
+    "prettier": "prettier --write .",
+    "prettier:report": "prettier --check .",
     "test": "vitest run",
     "test:watch": "vitest"
   },
