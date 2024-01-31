@@ -84,7 +84,7 @@ describe('fn checkImage', () => {
     await expect(promise).resolves.toBeUndefined();
   });
 
-  it('should reject with a message if the image is too big', async () => {
+  it('should reject with an error message if the image is too big', async () => {
     expect.assertions(1);
 
     const promise = checkImage('foo');
@@ -92,18 +92,18 @@ describe('fn checkImage', () => {
     img.height = 501;
     img.onload?.(event);
 
-    await expect(promise).rejects.toEqual(
+    await expect(promise).rejects.toThrowError(
       `Image is too big (${img.width * img.height} pixels). Please, use image with less than 500 000 pixels`,
     );
   });
 
-  it('should reject with a message  if the image is not found', async () => {
+  it('should reject with an error message if the image is not found', async () => {
     expect.assertions(1);
 
     const promise = checkImage('foo');
     img.onerror?.(event);
 
-    await expect(promise).rejects.toEqual('Image not found');
+    await expect(promise).rejects.toThrowError('Image not found');
   });
 });
 

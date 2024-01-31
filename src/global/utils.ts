@@ -36,14 +36,14 @@ export function checkImage(imageUrl: string): Promise<void> {
       const pixels = img.width * img.height;
 
       if (pixels > 500_000) {
-        reject(`Image is too big (${pixels} pixels). Please, use image with less than 500 000 pixels`);
+        reject(new Error(`Image is too big (${pixels} pixels). Please, use image with less than 500 000 pixels`));
       }
 
       resolve();
     };
 
     img.onerror = () => {
-      reject('Image not found');
+      reject(new Error('Image not found'));
     };
   });
 }
