@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 
-import { describe, expect, it, vi, beforeEach, afterEach, MockInstance } from 'vitest';
+import { describe, expect, it, vi, beforeEach } from 'vitest';
 import { checkInputs, checkImage, buildWorkspaceUrl } from './utils.ts';
 
 import CONSTS from './consts.ts';
@@ -57,42 +57,53 @@ describe('fn checkInputs', () => {
 });
 
 describe('fn checkImage', () => {
+  const event = {} as Event;
   let img: HTMLImageElement;
-  let imageMock: MockInstance;
+
+  const savedCreateElement = document.createElement;
 
   beforeEach(() => {
-    img = new Image();
-    imageMock = vi.spyOn(window, 'Image').mockImplementation(() => img);
-  });
+    document.createElement = vi.fn((type) => {
+      if (type === 'img') {
+        img = {} as HTMLImageElement;
+        return img;
+      }
 
-  afterEach(() => {
-    imageMock.mockRestore();
+      return savedCreateElement.call(document, type);
+    });
   });
 
   it('should resolve if the image has valid dimensions', async () => {
+    expect.assertions(1);
+
+    const promise = checkImage('foo');
     img.width = 1000;
     img.height = 500;
+    img.onload?.(event);
 
-    setImmediate(() => img.onload?.(new Event('load')));
-
-    await expect(checkImage('')).resolves.toBeUndefined();
+    await expect(promise).resolves.toBeUndefined();
   });
 
   it('should reject with a message if the image is too big', async () => {
+    expect.assertions(1);
+
+    const promise = checkImage('foo');
     img.width = 1000;
     img.height = 501;
+    img.onload?.(event);
 
-    setImmediate(() => img.onload?.(new Event('load')));
-
-    await expect(checkImage('')).rejects.toEqual(
-      'Image is too big (501000 pixels). Please, use image with less than 500 000 pixels',
+    await expect(promise).rejects.toEqual(
+      `Image is too big (${img.width * img.height} pixels). Please, use image with less than 500 000 pixels`,
     );
   });
 
   it('should reject with a message  if the image is not found', async () => {
-    setImmediate(() => img.onerror?.(new Event('error')));
+    expect.assertions(1);
 
-    await expect(checkImage('')).rejects.toEqual('Image not found');
+    const promise = checkImage('foo');
+    img.onerror?.(event);
+
+    await expect(promise).rejects.toEqual('Image not found');
   });
 });
 
