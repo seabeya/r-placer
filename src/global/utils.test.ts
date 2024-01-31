@@ -1,5 +1,7 @@
-import { describe, expect, it } from 'vitest';
-import { checkInputs } from './utils.ts';
+// @vitest-environment jsdom
+
+import { describe, expect, it, vi, beforeEach, afterEach, MockInstance } from 'vitest';
+import { checkInputs, checkImage } from './utils.ts';
 
 describe('fn checkInputs', () => {
   const url = 'https://example.com';
@@ -49,5 +51,45 @@ describe('fn checkInputs', () => {
       expect(checkInputs(url, downLimit, '20')).toEqual({ status, message });
       expect(checkInputs(url, '10', downLimit)).toEqual({ status, message });
     });
+  });
+});
+
+describe('fn checkImage', () => {
+  let img: HTMLImageElement;
+  let imageMock: MockInstance;
+
+  beforeEach(() => {
+    img = new Image();
+    imageMock = vi.spyOn(window, 'Image').mockImplementation(() => img);
+  });
+
+  afterEach(() => {
+    imageMock.mockRestore();
+  });
+
+  it('should resolve if the image has valid dimensions', async () => {
+    img.width = 1000;
+    img.height = 500;
+
+    setImmediate(() => img.onload?.(new Event('load')));
+
+    await expect(checkImage('')).resolves.toBeUndefined();
+  });
+
+  it('should reject with a message if the image is too big', async () => {
+    img.width = 1000;
+    img.height = 501;
+
+    setImmediate(() => img.onload?.(new Event('load')));
+
+    await expect(checkImage('')).rejects.toEqual(
+      'Image is too big (501000 pixels). Please, use image with less than 500 000 pixels',
+    );
+  });
+
+  it('should reject with a message  if the image is not found', async () => {
+    setImmediate(() => img.onerror?.(new Event('error')));
+
+    await expect(checkImage('')).rejects.toEqual('Image not found');
   });
 });
