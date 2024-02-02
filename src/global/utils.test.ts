@@ -5,7 +5,7 @@ import { checkInputs, checkImage, buildWorkspaceUrl, getInputsFromUrl } from './
 
 import CONSTS from './consts.ts';
 
-describe('fn checkInputs', () => {
+describe(`fn ${checkInputs.name}`, () => {
   const url = 'https://example.com';
 
   it('should return {status: true, message: ...} if all inputs are valid', () => {
@@ -56,7 +56,7 @@ describe('fn checkInputs', () => {
   });
 });
 
-describe('fn checkImage', () => {
+describe(`fn ${checkImage.name}`, () => {
   const event = {} as Event;
   let img: HTMLImageElement;
 
@@ -107,7 +107,7 @@ describe('fn checkImage', () => {
   });
 });
 
-describe('fn buildWorkspaceUrl', () => {
+describe(`fn ${buildWorkspaceUrl.name}`, () => {
   it('should build a valid workspace url', () => {
     const url = 'https://example.com';
     const x = '10';
@@ -131,7 +131,7 @@ describe('fn buildWorkspaceUrl', () => {
   });
 });
 
-describe('fn getInputsFromUrl', () => {
+describe(`fn ${getInputsFromUrl.name}`, () => {
   it('should return the correct values from queryString', () => {
     const queryString = 'url=https%3A%2F%2Fexample.com&x=10&y=20';
 

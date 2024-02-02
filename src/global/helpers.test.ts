@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { throwFalsey } from './helpers.ts';
 
-describe('fn throwFalsey', () => {
+describe(`fn ${throwFalsey.name}`, () => {
   it('should throw an error with the given message if status is false', () => {
     const props = {
       status: false,
