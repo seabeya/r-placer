@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 
-import { describe, expect, it, vi, beforeEach } from 'vitest';
+import { describe, expect, it, vi, beforeEach, afterEach } from 'vitest';
 import { checkInputs, checkImage, buildWorkspaceUrl, getInputsFromUrl } from './utils.ts';
 
 import CONSTS from './consts.ts';
@@ -60,17 +60,15 @@ describe(`fn ${checkImage.name}`, () => {
   const event = {} as Event;
   let img: HTMLImageElement;
 
-  const savedCreateElement = document.createElement;
-
   beforeEach(() => {
-    document.createElement = vi.fn((type) => {
-      if (type === 'img') {
-        img = {} as HTMLImageElement;
-        return img;
-      }
-
-      return savedCreateElement.call(document, type);
+    vi.spyOn(window, 'Image').mockImplementation(() => {
+      img = {} as HTMLImageElement;
+      return img;
     });
+  });
+
+  afterEach(() => {
+    vi.restoreAllMocks();
   });
 
   it('should resolve if the image has valid dimensions', async () => {
