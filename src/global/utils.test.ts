@@ -71,6 +71,11 @@ describe(`fn ${checkImage.name}`, () => {
     vi.restoreAllMocks();
   });
 
+  it('should pass the provided url to the image src', () => {
+    checkImage('foo');
+    expect(img.src).toBe('foo');
+  });
+
   it('should resolve if the image has valid dimensions', async () => {
     expect.assertions(1);
 
