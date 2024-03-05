@@ -27,7 +27,7 @@ Here's how it works:
 1. Go to https://r-placer.seabeya.com
 2. **Enter an image URL**
 
-   > You need an image URL that has been previously prepared and shared on image hosting platforms such as Imgur, Discord, etc.
+   > You need an image that has been previously prepared and shared on image hosting platforms such as Imgur, Discord, etc.
 
    > To obtain the correct URL from such platforms, right-click and choose either "Copy image address" or "Open image in new tab" then copy the URL.
 
