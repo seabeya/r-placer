@@ -54,3 +54,13 @@ export function buildWorkspaceUrl(url: string, x: string, y: string): string {
 
   return link.toString();
 }
+
+export function getInputsFromUrl(queryString: string) {
+  const urlParams = new URLSearchParams(queryString);
+
+  const url = urlParams.get('url') || '';
+  const x = urlParams.get('x') || '';
+  const y = urlParams.get('y') || '';
+
+  return { url, x, y };
+}
