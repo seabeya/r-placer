@@ -11,7 +11,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "next": "14.1.4",
+    "next": "14.2.10",
     "react": "^18",
     "react-dom": "^18",
     "vite-tsconfig-paths": "^4.3.2"
