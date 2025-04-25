@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     'overlay',
     'reddit place tool',
     'r-place',
-    'r-placer',,
+    'r-placer',
   ],
   openGraph: {
     type: 'website',
