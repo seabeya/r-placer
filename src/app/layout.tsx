@@ -15,18 +15,17 @@ export const metadata: Metadata = {
     'overlay',
     'reddit place tool',
     'r-place',
-    'r-placer',
-    'seabeya',
+    'r-placer',,
   ],
   openGraph: {
     type: 'website',
-    url: 'https://r-placer.seabeya.com',
+    url: 'https://r-placer.sh2a.org',
     title: 'R-Placer',
     description: 'Pixel Art Placer/Coordinator for the Reddit Place Event.',
     siteName: 'R-Placer',
     images: [
       {
-        url: 'https://r-placer.seabeya.com/icons/icon-96x96.png',
+        url: 'https://r-placer.sh2a.org/icons/icon-96x96.png',
         alt: 'R-Placer',
       },
     ],

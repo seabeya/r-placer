@@ -24,7 +24,7 @@ Here's how it works:
 
 ### How to use:
 
-1. Go to https://r-placer.seabeya.com
+1. Go to https://r-placer.sh2a.org
 2. **Enter an image URL**
 
    > You need an image that has been previously prepared and shared on image hosting platforms such as Imgur, Discord, etc.
@@ -38,12 +38,12 @@ Here's how it works:
 4. **Click "generate"**
    > A new workspace URL will be created for you. When you follow the link, the workspace will be ready for placing the image you provided on the r/place canvas. Share the link with others to work together.
    >
-   > Here is an example workspace link: https://r-placer.seabeya.com/workspace/?url=https%3A%2F%2Fr-placer.seabeya.com%2Ffavicon.ico&x=0&y=0
+   > Here is an example workspace link: https://r-placer.sh2a.org/workspace/?url=https%3A%2F%2Fr-placer.sh2a.org%2Ffavicon.ico&x=0&y=0
 
 <br>
 
 <hr>
 
-Looking for an overlay? Take a look at: https://github.com/seabeya/r-place-overlay
+Looking for an overlay? Take a look at: https://github.com/sh2aliyev/r-place-overlay
 
 <br>

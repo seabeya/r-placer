@@ -16,8 +16,8 @@ export default function Footer() {
       </p>
       <p className="text-xs text-gray-400 sm:text-sm" suppressHydrationWarning={true}>
         {`© ${new Date().getFullYear()} Sha'an Aliyev / `}
-        <GoTo href="https://www.seabeya.com/" className="hover:underline">
-          seabeya.com
+        <GoTo href="https://sh2a.org/" className="hover:underline">
+          sh2a.org
         </GoTo>
       </p>
     </footer>
